@@ -1,0 +1,102 @@
+Blog api notes
+
+//Goals
+    Create amd api for the front end of our blog. This API must handle ALL CRUD functions
+
+    In this app the use should be able to log in, create an account, Home Page(see all published blog items). Profile page(edit user's blog item, delete a blog item, add a blog item)
+
+CodeBase structure
+
+//Controllers
+    Controllers/Folder
+        UserController // File
+            Login // Endpoint
+            Create a user 
+            Update a user
+            Delete a user
+
+
+        BlogController // File
+            Create Blog Item // Endpoint   //C
+            Get All Blog Items             //R
+            Update Blog Item               //U
+            Delete Blog Item               //D
+
+            Get blog items by UserID
+            Get blog items by Tags
+            Get blog items by Category
+
+
+//Services
+    Service/Folder  
+        Context // Folder   
+            DataContext // File
+
+        UserService // File
+            GetUserByUserName (for login purposes)
+            Login // function
+            Create a user 
+            Update a user
+            Delete a user
+
+
+        BlogService // File
+            Create Blog Item // functions   //C
+            Get All Blog Items              //R
+            Update Blog Item                //U
+            Delete Blog Item                //D
+
+            Get blog items by UserID
+            Get blog items by Tags
+            Get blog items by Category
+
+
+        PasswordService // File
+            Hash Password
+            Verify Hash Password
+
+//Models
+    Models/Folder
+        UserModel // File
+            int ID 
+            string userName
+            string Salt
+            string Hash
+
+
+        BlogItemModel // File
+            int ID
+            int UserID
+            string PublishedName
+            string Date
+            string Title
+            string Image
+            string Description
+            string Caregories
+            string Tags
+            bool isPublished
+            bool isDeleted (soft delete. acts like its deleted but its not. its still in the database. just in case you need it back)
+
+
+        --------- Items above save to DB^ ----------
+        DTO's // Folder
+            LoginDTO // File
+                string Username
+                string Password
+            CreateAccountDTO // File
+                int ID = 0
+                string Username
+                string Password
+
+            PasswordDTO // File
+                string Salt
+                string Hash
+
+
+
+
+
+
+
+    Admin:     AcademyBlogAdmin
+    Password:  AcademyBlogPassword!
